@@ -41,3 +41,8 @@ if [ -d "$HOME/.p5/bin" ]; then
   source "$HOME/.p5/etc/bashrc"
 fi
 
+if [ -d "$HOME/.usr/gnubin" ]; then
+  PATH="$HOME/.usr/gnubin":"$PATH"
+  MANPATH="$HOME/.usr/gnuman":"$MANPATH"
+fi
+
