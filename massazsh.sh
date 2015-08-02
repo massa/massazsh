@@ -41,3 +41,12 @@ if [ -d "$HOME/.p5/bin" ]; then
   source "$HOME/.p5/etc/bashrc"
 fi
 
+for i in $HOME $HOME/Cloud/{Git,Work,Temp,Dropbox,Dropbox/Public}
+do
+  if [ -z "$CDPATH" ]; then
+    CDPATH=$i
+  else
+    CDPATH=$CDPATH:$i
+  fi
+done
+
