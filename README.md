@@ -1,0 +1,2 @@
+# massazsh
+Zsh Plugin
