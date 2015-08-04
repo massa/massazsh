@@ -1,1 +1,1 @@
-massazsh.sh
+massa.sh
