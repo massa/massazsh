@@ -16,6 +16,7 @@ alias fgrep='noglob fgrep --color=auto'
 alias egrep='noglob egrep --color=auto'
 alias ack='noglob ack'
 alias find='noglob find'
+alias vi=vim
 
 alias ll='ls -l'
 alias la='ls -A'
@@ -26,6 +27,10 @@ alias l='ls -CF'
 # alias s7='tmux neww -n Home -t 7 "ssh -t oo tmux attach -t Home"'
 # alias s6='tmux neww -n Me -t 6 "ssh -t me tmux new -s Me"'
 # alias sx='tmux attach -t Work || tmux new -s Work'
+
+if [ -x "/usr/libexec/path_helper" ]; then
+  eval $(/usr/libexec/path_helper)
+fi
 
 HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
 
