@@ -17,6 +17,8 @@ alias egrep='noglob egrep --color=auto'
 alias ack='noglob ack'
 alias find='noglob find'
 
+alias pacq='package-query -AQSs'
+
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
