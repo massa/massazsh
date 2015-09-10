@@ -24,6 +24,11 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias sx='tmux attach'
+alias s9='tmux neww -n root -t 9 "sudo -i"'
+alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
+alias s5='tmux neww -n  me  -t 6 "ssh me"'
+
 # alias s9='tmux neww -n Root -t 9 "sudo su -"'
 # alias s7='tmux neww -n Home -t 7 "ssh -t home screen -xRR"'
 # alias s7='tmux neww -n Home -t 7 "ssh -t oo tmux attach -t Home"'
