@@ -60,7 +60,7 @@ if [ -d "$HOME/.usr/gnubin" ]; then
   MANPATH="$HOME/.usr/gnuman":"$MANPATH"
 fi
 
-for i in $HOME $HOME/Cloud/{Git,Work,Temp,Dropbox,Dropbox/Public}
+for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
 do
   if [ -z "$CDPATH" ]; then
     CDPATH=$i
