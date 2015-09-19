@@ -29,12 +29,6 @@ alias s9='tmux neww -n root -t 9 "sudo -i"'
 alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
 alias s5='tmux neww -n  me  -t 6 "ssh me"'
 
-# alias s9='tmux neww -n Root -t 9 "sudo su -"'
-# alias s7='tmux neww -n Home -t 7 "ssh -t home screen -xRR"'
-# alias s7='tmux neww -n Home -t 7 "ssh -t oo tmux attach -t Home"'
-# alias s6='tmux neww -n Me -t 6 "ssh -t me tmux new -s Me"'
-# alias sx='tmux attach -t Work || tmux new -s Work'
-
 if [ -x "/usr/libexec/path_helper" ]; then
   eval $(/usr/libexec/path_helper)
 fi
@@ -68,4 +62,63 @@ do
     CDPATH=$CDPATH:$i
   fi
 done
+
+# https://github.com/dbbolton
+#
+# Below are some useful Perl-related aliases/functions that I use with zsh.
+
+
+# Aliases ###################################################################
+
+# perlbrew ########
+alias pbi='perlbrew install'
+alias pbl='perlbrew list'
+alias pbo='perlbrew off'
+alias pbs='perlbrew switch'
+alias pbu='perlbrew use'
+
+# Perl ############
+
+# perldoc`
+alias pd='perldoc'
+
+# use perl like awk/sed
+alias ple='perl -wlnE'
+
+# show the latest stable release of Perl
+alias latest-perl='curl -Ls http://www.perl.org/get.html | perl -wlne '\''if (/perl\-([\d\.]+)\.tar\.gz/) { print $1; exit;}'\'
+
+
+
+# Functions #################################################################
+
+# newpl - creates a basic Perl script file and opens it with $EDITOR
+newpl () {
+	# set $EDITOR to 'vim' if it is undefined
+	[[ -z $EDITOR ]] && EDITOR=vim
+
+	# if the file exists, just open it
+	if [[ -e $1 ]]; then
+          print "$1 exists; not modifying.\n" && $EDITOR $1
+        else
+	# if it doesn't, make it, and open it
+          print '#!/usr/bin/env perl'"\n"'use massa;'\
+		"\n\n" > $1 && $EDITOR $1
+        fi
+}
+
+
+# pgs - Perl Global Substitution
+# find pattern		= 1st arg
+# replace pattern	= 2nd arg
+# filename			= 3rd arg
+pgs() { # [find] [replace] [filename]
+    perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
+}
+
+
+# Perl grep, because 'grep -P' is terrible. Lets you work with pipes or files.
+prep() { # [pattern] [filename unless STDOUT]
+    perl -nle 'print if /'"$1"'/;' $2
+}
 
