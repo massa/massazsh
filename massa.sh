@@ -16,7 +16,8 @@ alias fgrep='noglob fgrep --color=auto'
 alias egrep='noglob egrep --color=auto'
 alias ack='noglob ack'
 alias find='noglob find'
-alias vi=vim
+alias vi='nvim'
+alias vd='nvim -d'
 
 alias pacq='package-query -AQSs'
 
