@@ -65,6 +65,8 @@ do
   fi
 done
 
+export EDITOR=nvim
+export VISUAL=nvim
 
 # # fzf ############
 
