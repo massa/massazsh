@@ -18,6 +18,7 @@ alias ack='noglob ack'
 alias find='noglob find'
 alias vi='nvim'
 alias vd='nvim -d'
+alias vimdiff='nvim -d'
 alias view='nvim -R'
 
 alias pacq='package-query -AQSs'
