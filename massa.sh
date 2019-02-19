@@ -43,8 +43,8 @@ if [ -d "$HOME/.usr/bin" ]; then
   PATH="$HOME/.usr/bin":"$PATH"
 fi
 
-if [ -d "$HOME/.b/bin" ]; then
-  PATH="$HOME/.b/bin":"$PATH"
+if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
 if [ -d "$HOME/.p5/bin" ]; then
