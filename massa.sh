@@ -8,9 +8,9 @@ alias mkdir='mkdir -v'
 alias rmdir='rmdir -v'
 alias md=mkdir
 
-alias ls='ls --color=auto'
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
+alias ls='exa --color=automatic --color-scale'
+alias dir='exa --color=automatic --color-scale --format=vertical'
+alias vdir='exa --color=automatic --color-scale --format=long'
 alias grep='noglob grep --color=auto'
 alias fgrep='noglob fgrep --color=auto'
 alias egrep='noglob egrep --color=auto'
@@ -25,8 +25,8 @@ alias view='nvim -R'
 alias pacq='package-query -AQSs'
 
 alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+alias la='ls -a'
+alias l='ls -GF'
 
 alias sx='tmux attach'
 alias s9='tmux neww -n root -t 9 "sudo -i"'
