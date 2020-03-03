@@ -47,6 +47,10 @@ if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
+if [ -d "/usr/local/bin" ]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 if [ -d "$HOME/.p5/bin" ]; then
   export PERLBREW_ROOT="$HOME/.p5"
   PATH="$HOME/.p5/bin":"$PATH"
