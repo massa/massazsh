@@ -44,11 +44,11 @@ if [ -d "$HOME/.usr/bin" ]; then
 fi
 
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  [ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
 if [ -d "/usr/local/bin" ]; then
-  eval $(/usr/local/bin/brew shellenv)
+  [ -x /usr/local/bin/brew ] && eval $(/usr/local/bin/brew shellenv)
 fi
 
 if [ -d "$HOME/.p5/bin" ]; then
