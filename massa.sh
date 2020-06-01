@@ -29,6 +29,7 @@ alias la='ls -a'
 alias l='ls -GF'
 
 alias sx='tmux attach'
+alias s8='tmux neww -n e8099 -t 8 "ssh -t e8099 tmux attach"'
 alias s9='tmux neww -n root -t 9 "sudo -i"'
 alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
 alias s5='tmux neww -n  me  -t 6 "ssh me"'
