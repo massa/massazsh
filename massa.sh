@@ -34,14 +34,12 @@ alias s9='tmux neww -n root -t 9 "sudo -i"'
 alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
 alias s5='tmux neww -n  me  -t 6 "ssh me"'
 
+HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
+export EDITOR=nvim
+export VISUAL=nvim
+
 if [ -x "/usr/libexec/path_helper" ]; then
   eval $(/usr/libexec/path_helper)
-fi
-
-HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
-
-if [ -d "$HOME/.usr/bin" ]; then
-  PATH="$HOME/.usr/bin":"$PATH"
 fi
 
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
@@ -52,15 +50,23 @@ if [ -d "/usr/local/bin" ]; then
   [ -x /usr/local/bin/brew ] && eval $(/usr/local/bin/brew shellenv)
 fi
 
+if [ -d "$HOME/.usr/bin" ]; then
+  PATH="$HOME/.usr/bin":"$PATH"
+fi
+
+if [ -d "$HOME/.usr/gnubin" ]; then
+  PATH="$HOME/.usr/gnubin":"$PATH"
+  MANPATH="$HOME/.usr/gnuman":"$MANPATH"
+fi
+
 if [ -d "$HOME/.p5/bin" ]; then
   export PERLBREW_ROOT="$HOME/.p5"
   PATH="$HOME/.p5/bin":"$PATH"
   source "$HOME/.p5/etc/bashrc"
 fi
 
-if [ -d "$HOME/.usr/gnubin" ]; then
-  PATH="$HOME/.usr/gnubin":"$PATH"
-  MANPATH="$HOME/.usr/gnuman":"$MANPATH"
+if [ -d "$HOME/.raku/bin" ]; then
+  PATH="$HOME/.raku/bin":"$PATH"
 fi
 
 for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
@@ -71,78 +77,4 @@ do
     CDPATH=$CDPATH:$i
   fi
 done
-
-export EDITOR=nvim
-export VISUAL=nvim
-
-# # fzf ############
-
-# if _has fzf && _has ag; then
-#   export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-#   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-#   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-#   export FZF_DEFAULT_OPTS='
-#   --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
-#   --color info:108,prompt:109,spinner:108,pointer:168,marker:168
-#   '
-# fi
-
-# https://github.com/dbbolton
-#
-# Below are some useful Perl-related aliases/functions that I use with zsh.
-
-
-# Aliases ###################################################################
-
-# perlbrew ########
-alias pbi='perlbrew install'
-alias pbl='perlbrew list'
-alias pbo='perlbrew off'
-alias pbs='perlbrew switch'
-alias pbu='perlbrew use'
-
-# Perl ############
-
-# perldoc`
-alias pd='perldoc'
-
-# use perl like awk/sed
-alias ple='perl -wlnE'
-
-# show the latest stable release of Perl
-alias latest-perl='curl -Ls http://www.perl.org/get.html | perl -wlne '\''if (/perl\-([\d\.]+)\.tar\.gz/) { print $1; exit;}'\'
-
-
-
-# Functions #################################################################
-
-# newpl - creates a basic Perl script file and opens it with $EDITOR
-newpl () {
-	# set $EDITOR to 'vim' if it is undefined
-	[[ -z $EDITOR ]] && EDITOR=vim
-
-	# if the file exists, just open it
-	if [[ -e $1 ]]; then
-          print "$1 exists; not modifying.\n" && $EDITOR $1
-        else
-	# if it doesn't, make it, and open it
-          print '#!/usr/bin/env perl'"\n"'use massa;'\
-		"\n\n" > $1 && $EDITOR $1
-        fi
-}
-
-
-# pgs - Perl Global Substitution
-# find pattern		= 1st arg
-# replace pattern	= 2nd arg
-# filename			= 3rd arg
-pgs() { # [find] [replace] [filename]
-    perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
-}
-
-
-# Perl grep, because 'grep -P' is terrible. Lets you work with pipes or files.
-prep() { # [pattern] [filename unless STDOUT]
-    perl -nle 'print if /'"$1"'/;' $2
-}
 
