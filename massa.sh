@@ -34,14 +34,12 @@ alias s9='tmux neww -n root -t 9 "sudo -i"'
 alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
 alias s5='tmux neww -n  me  -t 6 "ssh me"'
 
+HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
+export EDITOR=nvim
+export VISUAL=nvim
+
 if [ -x "/usr/libexec/path_helper" ]; then
   eval $(/usr/libexec/path_helper)
-fi
-
-HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
-
-if [ -d "$HOME/.usr/bin" ]; then
-  PATH="$HOME/.usr/bin":"$PATH"
 fi
 
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
@@ -52,15 +50,23 @@ if [ -d "/usr/local/bin" ]; then
   [ -x /usr/local/bin/brew ] && eval $(/usr/local/bin/brew shellenv)
 fi
 
+if [ -d "$HOME/.usr/bin" ]; then
+  PATH="$HOME/.usr/bin":"$PATH"
+fi
+
+if [ -d "$HOME/.usr/gnubin" ]; then
+  PATH="$HOME/.usr/gnubin":"$PATH"
+  MANPATH="$HOME/.usr/gnuman":"$MANPATH"
+fi
+
 if [ -d "$HOME/.p5/bin" ]; then
   export PERLBREW_ROOT="$HOME/.p5"
   PATH="$HOME/.p5/bin":"$PATH"
   source "$HOME/.p5/etc/bashrc"
 fi
 
-if [ -d "$HOME/.usr/gnubin" ]; then
-  PATH="$HOME/.usr/gnubin":"$PATH"
-  MANPATH="$HOME/.usr/gnuman":"$MANPATH"
+if [ -d "$HOME/.raku/bin" ]; then
+  PATH="$HOME/.raku/bin":"$PATH"
 fi
 
 for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
@@ -71,9 +77,6 @@ do
     CDPATH=$CDPATH:$i
   fi
 done
-
-export EDITOR=nvim
-export VISUAL=nvim
 
 # # fzf ############
 
