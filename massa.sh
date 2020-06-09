@@ -42,6 +42,10 @@ if [ -x "/usr/libexec/path_helper" ]; then
   eval $(/usr/libexec/path_helper)
 fi
 
+if [ -x "$(which kitty 2>/dev/null)" ]; then
+  . <(kitty + complete setup zsh)
+fi
+
 if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
   [ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
