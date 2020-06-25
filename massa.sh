@@ -75,6 +75,10 @@ if [ -d "$HOME/.raku/bin" ]; then
   PATH="$HOME/.raku/bin":"$PATH"
 fi
 
+if [ -d "$HOME/.rakubrew/shims" ]; then
+  PATH="$HOME/.rakubrew/shims":"$PATH"
+fi
+
 for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
 do
   if [ -z "$CDPATH" ]; then
@@ -83,4 +87,3 @@ do
     CDPATH=$CDPATH:$i
   fi
 done
-
