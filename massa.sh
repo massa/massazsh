@@ -79,6 +79,10 @@ if [ -d "$HOME/.rakubrew/shims" ]; then
   PATH="$HOME/.rakubrew/shims":"$PATH"
 fi
 
+if [ -d "$HOME/.local/node_modules/.bin" ]; then
+  PATH="$HOME/.local/node_modules/.bin":"$PATH"
+fi
+
 for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
 do
   if [ -z "$CDPATH" ]; then
