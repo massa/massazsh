@@ -34,6 +34,9 @@ alias s9='tmux neww -n root -t 9 "sudo -i"'
 alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
 alias s5='tmux neww -n  me  -t 6 "ssh me"'
 
+alias konf='git --git-dir=$HOME/Cloud/Git/dotfiles-bare.git --work-tree=$HOME'
+konf config --local status.showUntrackedFiles no
+
 HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
 export EDITOR=nvim
 export VISUAL=nvim
