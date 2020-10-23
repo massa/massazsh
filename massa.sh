@@ -80,7 +80,7 @@ fi
 
 case "$SHELL" in
   (*/zsh)
-    [ -x "$HOME/.usr/bin/rakubrew" ] && eval $("$HOME/.usr/bin/rakubrew" init Zsh)
+    [ -x "$HOME/.usr/bin/rakubrew" ] && eval "$($HOME/.usr/bin/rakubrew init Zsh)"
     ;;
 esac
 
