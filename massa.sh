@@ -74,17 +74,15 @@ if [ -d "$HOME/.p5/bin" ]; then
   source "$HOME/.p5/etc/bashrc"
 fi
 
-if [ -d "$HOME/.raku/bin" ]; then
-  PATH="$HOME/.raku/bin":"$PATH"
-fi
-
-if [ -d "$HOME/.rakubrew/shims" ]; then
-  PATH="$HOME/.rakubrew/shims":"$PATH"
-fi
-
 if [ -d "$HOME/.local/node_modules/.bin" ]; then
   PATH="$HOME/.local/node_modules/.bin":"$PATH"
 fi
+
+case "$SHELL" in
+  (*/zsh)
+    [ -x "$HOME/.usr/bin/rakubrew" ] && eval $("$HOME/.usr/bin/rakubrew" init Zsh)
+    ;;
+esac
 
 for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
 do
