@@ -78,6 +78,10 @@ if [ -d "$HOME/.local/node_modules/.bin" ]; then
   PATH="$HOME/.local/node_modules/.bin":"$PATH"
 fi
 
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$HOME/.local/bin":"$PATH"
+fi
+
 case "$SHELL" in
   (*/zsh)
     [ -x "$HOME/.usr/bin/rakubrew" ] && eval "$($HOME/.usr/bin/rakubrew init Zsh)"
