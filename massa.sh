@@ -37,6 +37,9 @@ alias s5='tmux neww -n  me  -t 6 "ssh me"'
 alias konf='git --git-dir=$HOME/Cloud/Git/dotfiles-bare.git --work-tree=$HOME'
 konf config --local status.showUntrackedFiles no
 
+alias al='AlmgSocks -connect'
+alias ak='AlmgKillSocks'
+
 HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
 export EDITOR=nvim
 export VISUAL=nvim
