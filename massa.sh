@@ -32,7 +32,7 @@ alias sx='tmux attach'
 alias s8='tmux neww -n almg -t 8 "ssh -t almg tmux attach"'
 alias s9='tmux neww -n root -t 9 "sudo -i"'
 alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
-alias s5='tmux neww -n  me  -t 6 "ssh me"'
+alias s5='tmux neww -n  me  -t 5 "ssh me"'
 
 alias konf='git --git-dir=$HOME/Cloud/Git/dotfiles-bare.git --work-tree=$HOME'
 konf config --local status.showUntrackedFiles no
