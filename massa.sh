@@ -23,6 +23,7 @@ alias gvimdiff='nvim-qt -d'
 alias view='nvim -R'
 
 alias pacq='package-query -AQSs'
+alias scp='rsync-copy'
 
 alias ll='ls -l'
 alias la='ls -a'
