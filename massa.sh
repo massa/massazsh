@@ -90,7 +90,7 @@ if [ -d "$HOME/.raku/bin" ]; then
   PATH="$HOME/.raku/bin":"$PATH"
 fi
 
-if [ -d "$ASDF_DIR" && -d "$(asdf where rust)/bin" ]; then
+if [ -d "$ASDF_DIR" ] && [ -d "$(asdf where rust)/bin" ]; then
   PATH="$(asdf where rust)/bin":"$PATH"
 fi
 
