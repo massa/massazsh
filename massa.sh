@@ -90,6 +90,10 @@ if [ -d "$HOME/.raku/bin" ]; then
   PATH="$HOME/.raku/bin":"$PATH"
 fi
 
+if [ -d "$HOME/.cargo/bin" ]; then
+  PATH="$HOME/.cargo/bin":"$PATH"
+fi
+
 case "$SHELL" in
   (*/zsh)
     [ -x "$HOME/.rakubrew/bin/rakubrew" ] && eval "$($HOME/.rakubrew/bin/rakubrew init Zsh)"
