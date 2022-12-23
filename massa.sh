@@ -16,11 +16,11 @@ alias fgrep='noglob fgrep --color=auto'
 alias egrep='noglob egrep --color=auto'
 alias ack='noglob ack'
 alias find='noglob find'
-alias vi='nvim'
-alias vd='nvim -d'
-alias vimdiff='nvim -d'
-alias gvimdiff='nvim-qt -d'
-alias view='nvim -R'
+alias vi='lvim'
+alias vd='lvim -d'
+alias vimdiff='lvim -d'
+alias gvimdiff='lvim-qt -d'
+alias view='lvim -R'
 
 alias pacq='package-query -AQSs'
 alias scp='rsync-copy'
@@ -42,8 +42,8 @@ alias al='AlmgSocks -connect'
 alias ak='AlmgKillSocks'
 
 HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=lvim
+export VISUAL=lvim
 export ZSH_TMUX_UNICODE=true
 export ZSH_TMUX_AUTOCONNECT=true
 
