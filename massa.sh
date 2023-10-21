@@ -90,9 +90,9 @@ if [ -d "$HOME/.raku/bin" ]; then
   PATH="$HOME/.raku/bin":"$PATH"
 fi
 
-if [ -x "$HOME/.share/rtx/bin/rtx" ]; then
-  PATH="$HOME/.share/rtx/bin":"$PATH"
-  PATH="$HOME/.share/rtx/shims":"$PATH"
+if [ -x "$HOME/.local/share/rtx/bin/rtx" ]; then
+  PATH="$HOME/.local/share/rtx/bin":"$PATH"
+  PATH="$HOME/.local/share/rtx/shims":"$PATH"
   eval "$(rtx activate zsh)"
 fi
 
