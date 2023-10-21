@@ -90,8 +90,8 @@ if [ -d "$HOME/.raku/bin" ]; then
   PATH="$HOME/.raku/bin":"$PATH"
 fi
 
-if [ -d "$ASDF_DIR" ] && [ -d "$(asdf where rust)/bin" ]; then
-  PATH="$PATH":"$(asdf where rust)/bin"
+if [ -x "$(which rtx 2>/dev/null)" ]; then
+  eval "$(rtx activate zsh)"
 fi
 
 case "$SHELL" in
