@@ -90,11 +90,12 @@ if [ -d "$HOME/.raku/bin" ]; then
   PATH="$HOME/.raku/bin":"$PATH"
 fi
 
-if [ -x "$HOME/.local/share/rtx/bin/rtx" ]; then
-  PATH="$HOME/.local/share/rtx/bin":"$PATH"
-  PATH="$HOME/.local/share/rtx/shims":"$PATH"
-  eval "$(rtx activate zsh)"
+if [ ! -x "$HOME/.local/share/rtx/bin/rtx" ]; then
+  curl https://rtx.pub/install.sh | sh
 fi
+PATH="$HOME/.local/share/rtx/bin":"$PATH"
+PATH="$HOME/.local/share/rtx/shims":"$PATH"
+eval "$(rtx activate zsh)"
 
 case "$SHELL" in
   (*/zsh)
