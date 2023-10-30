@@ -90,6 +90,10 @@ if [ -d "$HOME/.raku/bin" ]; then
   PATH="$HOME/.raku/bin":"$PATH"
 fi
 
+if [ -d "$HOME/.local/share/nvim/mason/bin" ]; then
+  PATH="$HOME/.local/share/nvim/mason/bin":"$PATH"
+fi
+
 if [ ! -x "$HOME/.local/share/rtx/bin/rtx" ]; then
   curl https://rtx.pub/install.sh | sh
 fi
