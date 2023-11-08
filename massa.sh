@@ -95,16 +95,14 @@ fi
 
 if [ ! -x "$HOME/.local/share/rtx/bin/rtx" ]; then
   curl https://rtx.pub/install.sh | sh
+else
+  PATH="$HOME/.local/share/rtx/bin":"$PATH"
+  PATH="$HOME/.local/share/rtx/shims":"$PATH"
+  eval "$(rtx activate zsh)"
+  rtx reshim
+  # Lastly, clean my PATH
+  [[ -x $(which raku) ]] && PATH=$(raku -e '%*ENV<PATH>.split(":").map(*.IO.resolve).grep(*.d).grep(*.dir.grep({.x and not .d}))>>.Str.unique.join(":").say')
 fi
-PATH="$HOME/.local/share/rtx/bin":"$PATH"
-PATH="$HOME/.local/share/rtx/shims":"$PATH"
-eval "$(rtx activate zsh)"
-
-case "$SHELL" in
-  (*/zsh)
-    [ -x "$HOME/.rakubrew/bin/rakubrew" ] && eval "$($HOME/.rakubrew/bin/rakubrew init Zsh)"
-    ;;
-esac
 
 for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
 do
