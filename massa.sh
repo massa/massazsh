@@ -44,8 +44,7 @@ alias ak='AlmgKillSocks'
 HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
 export EDITOR=nvim
 export VISUAL=nvim
-export ZSH_TMUX_UNICODE=true
-export ZSH_TMUX_AUTOCONNECT=true
+export ZSH_ZELLIJ_AUTOSTART=true
 
 if [ -x "/usr/libexec/path_helper" ]; then
   eval $(/usr/libexec/path_helper)
