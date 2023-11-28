@@ -22,7 +22,7 @@ if [ -x "$(which eza 2>/dev/null)" ]; then
   a hdir='ls -G'
   a l='ls -G'
 elif [ -x "$(which exa 2>/dev/null)" ]; then
-  a ls='exa --git -F --icons=auto --color=auto'
+  a ls='exa --git -F --icons --color=auto'
   a dir='ls --format=long --header -aa'
   a vdir='ls --format=long --header -aa'
   a hdir='ls --format=vertical'
