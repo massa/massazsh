@@ -1,45 +1,66 @@
 alias a=alias
-alias h=history
-alias rm='rm -v'
-alias mv='mv -v'
-alias cp='cp -v'
-alias ln='ln -v'
-alias mkdir='mkdir -v'
-alias rmdir='rmdir -v'
-alias md=mkdir
+a h=history
+a rm='rm -v'
+a mv='mv -v'
+a cp='cp -v'
+a ln='ln -v'
+a mkdir='mkdir -v'
+a rmdir='rmdir -v'
+a md=mkdir
 
-alias ls='exa --color=automatic --color-scale'
-alias dir='exa --color=automatic --color-scale --format=vertical'
-alias vdir='exa --color=automatic --color-scale --format=long'
-alias grep='noglob grep --color=auto'
-alias fgrep='noglob fgrep --color=auto'
-alias egrep='noglob egrep --color=auto'
-alias ack='noglob ack'
-alias find='noglob find'
-alias vi='nvim'
-alias vd='nvim -d'
-alias vimdiff='nvim -d'
-alias gvimdiff='nvim-qt -d'
-alias view='nvim -R'
+a dir='ls -l'
+a vdir='ls -l'
+a hdir='ls'
+a ll='ls -l'
+a la='ls -a'
+a l='ls'
 
-alias pacq='package-query -AQSs'
-alias scp='rsync-copy'
+if [ -x "$(which eza 2>/dev/null)" ]; then
+  a ls='eza --git -F --icons=auto --color=auto'
+  a dir='ls -l --header -aa'
+  a vdir='ls -l --header -aa'
+  a hdir='ls -G'
+  a l='ls -G'
+elif [ -x "$(which exa 2>/dev/null)" ]; then
+  a ls='exa --git -F --icons=auto --color=auto'
+  a dir='ls --format=long --header -aa'
+  a vdir='ls --format=long --header -aa'
+  a hdir='ls --format=vertical'
+  a l='ls -G'
+elif [ -x "$(which lsd 2>/dev/null)" ]; then
+  a ls='lsd --color=auto'
+elif [ -x "$(which gls 2>/dev/null)" ]; then
+  a ls='gls --color=auto'
+fi
 
-alias ll='ls -l'
-alias la='ls -a'
-alias l='ls -GF'
+a grep='noglob grep --color=auto'
+a fgrep='noglob fgrep --color=auto'
+a egrep='noglob egrep --color=auto'
+a ack='noglob ack'
+a ag='noglob ag'
+a gr='noglob gr'
+a rak='noglob rak'
+a find='noglob find'
+a vi='nvim'
+a vd='nvim -d'
+a vimdiff='nvim -d'
+a gvimdiff='nvim-qt -d'
+a view='nvim -R'
 
-alias sx='tmux attach'
-alias s8='tmux neww -n almg -t 8 "ssh -t almg tmux attach"'
-alias s9='tmux neww -n root -t 9 "sudo -i"'
-alias s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
-alias s5='tmux neww -n  me  -t 5 "ssh me"'
+a pacq='package-query -AQSs'
+a scp='rsync-copy'
 
-alias konf='git --git-dir=$HOME/Cloud/Git/dotfiles-bare.git --work-tree=$HOME'
+a sx='tmux attach'
+a s8='tmux neww -n almg -t 8 "ssh -t almg tmux attach"'
+a s9='tmux neww -n root -t 9 "sudo -i"'
+a s7='tmux neww -n  oo  -t 7 "ssh -t oo tmux attach"'
+a s5='tmux neww -n  me  -t 5 "ssh me"'
+
+a konf='git --git-dir=$HOME/Cloud/Git/dotfiles-bare.git --work-tree=$HOME'
 konf config --local status.showUntrackedFiles no
 
-alias al='AlmgSocks -connect'
-alias ak='AlmgKillSocks'
+a al='AlmgSocks -connect'
+a ak='AlmgKillSocks'
 
 HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
 export EDITOR=nvim
