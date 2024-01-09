@@ -115,13 +115,13 @@ if [ -d "$HOME/.local/share/nvim/mason/bin" ]; then
   PATH="$HOME/.local/share/nvim/mason/bin":"$PATH"
 fi
 
-if [ ! -x "$HOME/.local/share/rtx/bin/rtx" ]; then
-  curl https://rtx.pub/install.sh | sh
+if [ ! -x "$HOME/.local/bin/mise" ]; then
+  curl https://mise.jdx.dev/install.sh | sh
 else
-  PATH="$HOME/.local/share/rtx/bin":"$PATH"
-  PATH="$HOME/.local/share/rtx/shims":"$PATH"
-  eval "$(rtx activate zsh)"
-  rtx reshim
+  PATH="$HOME/.local/share/mise/bin":"$PATH"
+  PATH="$HOME/.local/share/mise/shims":"$PATH"
+  eval "$(mise activate zsh)"
+  mise reshim
   # Lastly, clean my PATH
   [[ -x $(which raku) ]] && PATH=$(raku -e '%*ENV<PATH>.split(":").map(*.IO.resolve).grep(*.d).grep(*.dir.grep({.x and not .d}))>>.Str.unique.join(":").say')
 fi
