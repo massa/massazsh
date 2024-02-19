@@ -117,20 +117,27 @@ fi
 
 if [ ! -x "$HOME/.local/bin/mise" ]; then
   curl https://mise.jdx.dev/install.sh | sh
-else
-  PATH="$HOME/.local/share/mise/bin":"$PATH"
-  PATH="$HOME/.local/share/mise/shims":"$PATH"
-  eval "$(mise activate zsh)"
-  mise reshim
-  # Lastly, clean my PATH
-  [[ -x $(which raku) ]] && PATH=$(raku -e '%*ENV<PATH>.split(":").map(*.IO.resolve).grep(*.d).grep(*.dir.grep({.x and not .d}))>>.Str.unique.join(":").say')
 fi
+PATH="$HOME/.local/share/mise/bin":"$PATH"
+PATH="$HOME/.local/share/mise/shims":"$PATH"
+eval "$(mise activate zsh)"
+mise reshim
+
+if [ -x $(which cargo) ]; then
+  [[ ! -x $(which jj) ]] && cargo install --locked --bin jj jj-cli
+  source <(jj util completion zsh)
+fi
+#
+# Lastly, clean my PATH
+[[ -x $(which raku) ]] && PATH=$(raku -e '%*ENV<PATH>.split(":").map(*.IO.resolve).grep(*.d).grep(*.dir.grep({.x and not .d}))>>.Str.unique.join(":").say')
 
 for i in $HOME $HOME/Cloud/{Mounts,Git,Work,Temp,Dropbox,Dropbox/Public}
 do
-  if [ -z "$CDPATH" ]; then
-    CDPATH=$i
-  else
-    CDPATH=$CDPATH:$i
+  if [ -d "$i" ]; then
+    if [ -z "$CDPATH" ]; then
+      CDPATH=$i
+    else
+      CDPATH=$CDPATH:$i
+    fi
   fi
 done
