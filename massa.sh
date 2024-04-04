@@ -62,6 +62,8 @@ konf config --local status.showUntrackedFiles no
 a al='AlmgSocks -connect'
 a ak='AlmgKillSocks'
 
+export GOPATH=$HOME/Cloud/Temp/GoLang
+
 HISTIGNORE=$HISTIGNORE${HISTIGNORE+:}a:h:ls:ll:la:l:s9:s7:sx
 export EDITOR=nvim
 export VISUAL=nvim
